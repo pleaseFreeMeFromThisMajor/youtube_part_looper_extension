@@ -77,10 +77,10 @@ function createLoopUI() {
   const loopDiv = document.createElement('div');
   loopDiv.id = 'ytb-loop-container';
   loopDiv.innerHTML = `
-    <span><b>Loop Segment:</b></span>
-    <label>Từ: <input type="text" id="ytb-loop-start" value="1:25"></label>
-    <label>Đến: <input type="text" id="ytb-loop-end" value="3:00"></label>
-    <button id="ytb-loop-btn-toggle">Bật Loop</button>
+    <span><b>loop the part you like:</b></span>
+    <label>start: <input type="text" id="ytb-loop-start" value="1:25"></label>
+    <label>end: <input type="text" id="ytb-loop-end" value="3:00"></label>
+    <button id="ytb-loop-btn-toggle">start loop</button>
     <span id="ytb-loop-status"></span>
   `;
 
@@ -99,7 +99,7 @@ function createLoopUI() {
       endTime = timeToSeconds(inputEnd.value);
 
       if (endTime <= startTime) {
-        alert('Thời gian "Đến" phải lớn hơn thời gian "Từ"');
+        alert('end must be greater than start!');
         isLooping = false;
         return;
       }
