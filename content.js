@@ -47,7 +47,7 @@ function injectStyles() {
       border-radius: 18px;
       cursor: pointer;
       font-weight: 600;
-      background-color: #cc0000;
+      background-color: #f12bb2;
       color: white;
       transition: background 0.2s;
     }
@@ -65,7 +65,6 @@ function injectStyles() {
 function createLoopUI() {
   if (document.getElementById('ytb-loop-container')) return;
 
-  // Selector mới cho giao diện YouTube hiện tại (chèn ngay dưới khu vực Title / Action Buttons)
   const targetContainer = 
     document.querySelector('ytd-watch-metadata #title') || 
     document.querySelector('#title.ytd-watch-metadata') ||
@@ -85,7 +84,6 @@ function createLoopUI() {
     <span id="ytb-loop-status"></span>
   `;
 
-  // Chèn ngay bên dưới phần Title
   targetContainer.insertAdjacentElement('afterend', loopDiv);
 
   const btnToggle = document.getElementById('ytb-loop-btn-toggle');
@@ -106,16 +104,16 @@ function createLoopUI() {
         return;
       }
 
-      btnToggle.textContent = 'Tắt Loop';
+      btnToggle.textContent = 'end loop';
       btnToggle.classList.add('active');
-      statusSpan.textContent = 'Đang lặp...';
+      statusSpan.textContent = 'on loop';
 
       const video = document.querySelector('video');
       if (video && (video.currentTime < startTime || video.currentTime >= endTime)) {
         video.currentTime = startTime;
       }
     } else {
-      btnToggle.textContent = 'Bật Loop';
+      btnToggle.textContent = 'start loop';
       btnToggle.classList.remove('active');
       statusSpan.textContent = '';
     }
